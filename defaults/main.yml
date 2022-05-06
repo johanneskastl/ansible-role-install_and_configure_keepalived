@@ -4,3 +4,8 @@
 systemd_unit_name: 'keepalived.service'
 package_name: 'keepalived'
 config_file_path: '/etc/keepalived/keepalived.conf'
+
+# keepalived VRRP defaults
+
+vrrp_advert_int: 1
+vrrp_interface: 'eth0'
