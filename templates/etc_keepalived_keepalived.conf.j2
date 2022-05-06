@@ -23,5 +23,8 @@ vrrp_instance {{ vrrp_instance['name'] }} {
         {{ address }}
 {% endfor %}
     }
+{% if vrrp_instance['nopreempt'] is defined and vrrp_instance['nopreempt'] | bool %}
+    nopreempt
+{% endif %}
 }
 {% endfor %}
