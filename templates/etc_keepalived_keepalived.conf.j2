@@ -28,5 +28,12 @@ vrrp_instance {{ vrrp_instance['name'] }} {
 {% if vrrp_instance['nopreempt'] is defined and vrrp_instance['nopreempt'] | bool %}
     nopreempt
 {% endif %}
+{% if vrrp_instance['unicast_peers_group'] is defined %}
+    unicast_peer {
+{% for peer in group_without_current_host[loop.index -1] %}
+        {{ hostvars[peer]['ansible_default_ipv4']['address'] }}
+{% endfor %}
+    }
+{% endif -%}
 }
 {% endfor %}
