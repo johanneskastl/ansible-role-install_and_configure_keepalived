@@ -11,7 +11,7 @@ global_defs {
 
 {% for vrrp_instance in vrrp_instances -%}
 vrrp_instance {{ vrrp_instance['name'] }} {
-    {% if vrrp_instance['state'] is defined and vrrp_instance['state'][inventory_hostname] is defined-%}
+    {% if vrrp_instance['state'] is defined and vrrp_instance['state'][inventory_hostname] is defined -%}
     state {{ vrrp_instance['state'][inventory_hostname] }}
     {% endif -%}
     interface {{ vrrp_instance['interface'] | default(vrrp_interface) }}
