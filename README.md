@@ -8,7 +8,7 @@ Install and configure keepalived
 Requirements
 ------------
 
-None.
+You need to have access to one (or more) IP address that you can (and are allowed to!) use. Depending on your environment, these addresses might need to be allowed on your machine (e.g. OpenStack has a concept of 'allowed IP addresses' that are allowed to be run on your VM in addition to the regular ones).
 
 Role Variables
 --------------
