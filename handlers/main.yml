@@ -5,3 +5,8 @@
   ansible.builtin.service:
     name: "{{ systemd_unit_name }}"
     state: 'restarted'
+
+- name: 'reload of the keepalived configuration'
+  ansible.builtin.service:
+    name: "{{ systemd_unit_name }}"
+    state: 'reloaded'
