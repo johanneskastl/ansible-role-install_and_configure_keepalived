@@ -5,6 +5,10 @@ systemd_unit_name: 'keepalived.service'
 package_name: 'keepalived'
 config_file_path: '/etc/keepalived/keepalived.conf'
 
+# keepalived global defaults
+
+vrrp_strict: true
+
 # keepalived VRRP defaults
 
 vrrp_advert_int: 1
