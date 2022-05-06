@@ -6,6 +6,19 @@
     name: "{{ package_name }}"
     state: 'present'
 
+- name: 'Set variable that contains all hosts except this node'
+  ansible.builtin.set_fact:
+    group_without_current_host: "{{ group_without_current_host | default({}) | combine({ index: groups[item['unicast_peers_group']] | difference([inventory_hostname]) }) }}"
+  when:
+    - "item['unicast_peers_group'] is defined"
+  loop: "{{ vrrp_instances }}"
+  loop_control:
+    index_var: index
+
+- name: 'Output the new fact containing the list of "hosts other the current" for each of the vrrp_instances that have unicast_peers_group set'
+  ansible.builtin.debug:
+    var: group_without_current_host
+
 - name: "Create {{ config_file_path }}"
   ansible.builtin.template:
     src: 'etc_keepalived_keepalived.conf.j2'
