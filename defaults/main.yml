@@ -1,0 +1,6 @@
+---
+# install_and_configure_keepalived/defaults/main.yml
+
+systemd_unit_name: 'keepalived.service'
+package_name: 'keepalived'
+config_file_path: '/etc/keepalived/keepalived.conf'
