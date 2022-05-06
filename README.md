@@ -23,6 +23,10 @@ Those should be pretty much the same on most Linux distributions:
 - `package_name`: name of the package to install, defaults to `keepalived`
 - `config_file_path`: path to the keepalived configuration file, default is `/etc/keepalived/keepalived.conf`
 
+## keepalived global defaults
+
+- `vrrp_strict`: whether or not to set the keepalived option of the same name (defaults to `true` aka "please add this option to the configuration file") 
+
 ## VRRP defaults
 
 Those defaults are used for all `vrrp_instance` blocks, unless you specify them via the role variables you supply:
