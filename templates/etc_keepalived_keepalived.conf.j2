@@ -6,7 +6,9 @@
 global_defs {
    router_id LVS_DEVEL
    vrrp_skip_check_adv_addr
+{% if vrrp_strict is defined and vrrp_strict | bool %}
    vrrp_strict
+{% endif %}
 }
 
 {% for vrrp_instance in vrrp_instances -%}
