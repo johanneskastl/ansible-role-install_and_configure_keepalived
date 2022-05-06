@@ -1,0 +1,23 @@
+---
+# install_and_configure_keepalived/tasks/main.yml
+
+- name: 'Install the keepalived package'
+  ansible.builtin.package:
+    name: "{{ package_name }}"
+    state: 'present'
+
+- name: "Create {{ config_file_path }}"
+  ansible.builtin.template:
+    src: 'etc_keepalived_keepalived.j2'
+    dest: "{{ config_file_path }}"
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify:
+    - 'reload of the keepalived configuration'
+
+- name: 'Start and enable the keepalived service'
+  ansible.builtin.service:
+    name: "{{ systemd_unit_name }}"
+    state: 'started'
+    enabled: 'true'
