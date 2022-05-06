@@ -9,13 +9,19 @@ global_defs {
    vrrp_strict
 }
 
-vrrp_instance VI_1 {
-    state MASTER
-    interface eth0
-    virtual_router_id 51
-    priority 100
-    advert_int 1
+{% for vrrp_instance in vrrp_instances -%}
+vrrp_instance {{ vrrp_instance['name'] }} {
+    {% if vrrp_instance['state'] is defined and vrrp_instance['state'][inventory_hostname] is defined-%}
+    state {{ vrrp_instance['state'][inventory_hostname] }}
+    {% endif -%}
+    interface {{ vrrp_instance['interface'] | default(vrrp_interface) }}
+    virtual_router_id {{ vrrp_instance['virtual_router_id'] }}
+    priority {{ vrrp_instance['priority'][inventory_hostname] | int }}
+    advert_int {{ vrrp_instance['advert_int'] | default(vrrp_advert_int) }}
     virtual_ipaddress {
-        192.168.200.16
+{% for address in vrrp_instance['virtual_ip_addresses'] %}
+        {{ address }}
+{% endfor %}
     }
 }
+{% endfor %}
