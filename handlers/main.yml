@@ -1,0 +1,7 @@
+---
+# install_and_configure_keepalived/handlers/main.yml
+
+- name: 'restart the keepalived service'
+  ansible.builtin.service:
+    name: "{{ systemd_unit_name }}"
+    state: 'restarted'
