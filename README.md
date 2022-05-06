@@ -3,7 +3,9 @@
 install_and_configure_keepalived
 =========
 
-Install and configure keepalived
+This role installs and configures keepalived for **simple** scenarios. At this time it only supports one or more `vrrp_instance` blocks with the bare minimum of settings to get it working.
+
+Please don't expect this role to support each and every configuration option that keepalived has...
 
 Requirements
 ------------
