@@ -15,7 +15,9 @@ vrrp_instance {{ vrrp_instance['name'] }} {
     state {{ vrrp_instance['state'][inventory_hostname] }}
     {% endif -%}
     interface {{ vrrp_instance['interface'] | default(vrrp_interface) }}
+    {% if vrrp_instance['virtual_router_id'] is defined -%}
     virtual_router_id {{ vrrp_instance['virtual_router_id'] }}
+    {% endif -%}
     priority {{ vrrp_instance['priority'][inventory_hostname] | int }}
     advert_int {{ vrrp_instance['advert_int'] | default(vrrp_advert_int) }}
     virtual_ipaddress {
