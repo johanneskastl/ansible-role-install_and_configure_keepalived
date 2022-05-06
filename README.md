@@ -66,7 +66,9 @@ The optional variables are:
     keepalived2: 'BACKUP'
 ```
 
+In case you are using unicast, you need to specify the following variables:
 
+- `unicast_peers_group`: name of an Ansible group containing all the nodes this `vrrp_instance` will run on. The role will sort out the current host from this group and only add "other" hosts to the [`unicast_peer` option](https://www.keepalived.org/manpage.html).
 
 Dependencies
 ------------
