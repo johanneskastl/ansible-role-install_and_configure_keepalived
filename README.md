@@ -53,6 +53,7 @@ The required variables that can be used are:
 
 - `name`: name of this `vrrp_instance`
 - `virtual_ip_addresses`: list of virtual IP addresses, that this `vrrp_instance` should handle
+- `virtual_router_id`: the ID used for this virtual router
 - `priority`: for each keepalived node, this variable contains a key-value-pair with the host's name as key and the priority as value
 
 The optional variables are:
@@ -65,9 +66,7 @@ The optional variables are:
     keepalived2: 'BACKUP'
 ```
 
-In case you are using multicast, you need to specify the following variables:
 
-- `virtual_router_id`: the ID used for this virtual router (if multicast is being used)
 
 Dependencies
 ------------
