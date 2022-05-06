@@ -25,14 +25,14 @@ Those should be pretty much the same on most Linux distributions:
 
 ## VRRP defaults
 
-Those defaults are used for all vrrp_instance blocks, unless you specify them via the role variables you supply:
+Those defaults are used for all `vrrp_instance` blocks, unless you specify them via the role variables you supply:
 
 - `vrrp_advert_int`: (default: `1`)
 - `vrrp_interface`: (default: `eth0`)
 
 ## VRRP variables that you need to provide
 
-For each of the vrrp_instances you want to set up, you need to provide the following:
+For each of the `vrrp_instances` you want to set up, you need to provide the following:
 
 ```
 - name: 'VI_121'
@@ -53,7 +53,7 @@ The required variables that can be used are:
 
 The optional variables are:
 
-- `state`: you can set a `state` option on a vrrp_instance, to tell keepalived that this node is supposed to be the MASTER or BACKUP node. This let's the instance transition to this state immediately, if the `priority` is set accordingly (MASTER: 255, BACKUP: 200). This variable is expected to hold key-value-pairs for all of the nodes, with the host's name being the key and the `state` (i.e. `MASTER` or `BACKUP`) as the value
+- `state`: you can set a `state` option on a `vrrp_instance`, to tell keepalived that this node is supposed to be the MASTER or BACKUP node. This let's the instance transition to this state immediately, if the `priority` is set accordingly (MASTER: 255, BACKUP: 200). This variable is expected to hold key-value-pairs for all of the nodes, with the host's name being the key and the `state` (i.e. `MASTER` or `BACKUP`) as the value
 
 ```
   state:
