@@ -28,7 +28,7 @@
     group: 'root'
     mode: '0640'
   notify:
-    - 'reload of the keepalived configuration'
+    - 'Reload of the keepalived configuration'
 
 - name: 'Start and enable the keepalived service'
   ansible.builtin.service:
