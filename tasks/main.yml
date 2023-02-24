@@ -9,7 +9,7 @@
 - name: 'Set variable that contains all hosts except this node'
   ansible.builtin.set_fact:
     group_without_current_host:
-      "{{ group_without_current_host | default({}) | combine({ index: groups[item['unicast_peers_group']] | difference([inventory_hostname]) }) }}"
+      "{{ group_without_current_host | default({}) | combine({index: groups[item['unicast_peers_group']] | difference([inventory_hostname])}) }}"
   when:
     - "item['unicast_peers_group'] is defined"
   loop: "{{ vrrp_instances }}"
