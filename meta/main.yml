@@ -12,10 +12,11 @@ galaxy_info:
   platforms:
     - name: opensuse
       versions:
-        - 15
+        - '15.4'
+        - '15.5'
     - name: SLES
       versions:
-        - 15
+        - '15SP4'
 
   galaxy_tags: []
 
